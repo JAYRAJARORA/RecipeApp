@@ -4,10 +4,14 @@ import { Directive, ElementRef, HostBinding, HostListener, Renderer2 } from "@an
     selector: '[appDropdown]'
 })
 export class DropdownDirective {
-    constructor() {
+    constructor(private elementRef: ElementRef) {
     }
     @HostBinding('class.open') isOpen = false;
-    @HostListener("click") toggleOpen() {
-        this.isOpen = !this.isOpen;
-    };
+    // @HostListener("click") toggleOpen() {
+    //     this.isOpen = !this.isOpen;
+    // };
+
+    @HostListener('document:click', ['$event']) toggleOpen($event: Event) {
+        this.isOpen = this.elementRef.nativeElement.contains($event.target) ?  !this.isOpen : false;
+    }
 }
