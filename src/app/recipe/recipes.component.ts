@@ -3,12 +3,12 @@ import { Recipe } from './recipe.model';
 import { RecipeService } from './recipe.service';
 
 @Component({
-  selector: 'app-recipe',
-  templateUrl: './recipe.component.html',
-  styleUrl: './recipe.component.css',
+  selector: 'app-recipes',
+  templateUrl: './recipes.component.html',
+  styleUrl: './recipes.component.css',
   providers: [RecipeService]
 })
-export class RecipeComponent implements OnInit {
+export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
 
   ngOnInit(): void {
